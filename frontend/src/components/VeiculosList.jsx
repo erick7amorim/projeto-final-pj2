@@ -6,7 +6,7 @@ function VeiculosList() {
   const [veiculos, setVeiculos] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/veiculos')
+    axios.get('https://backend-wxoe.onrender.com/veiculos')
       .then(response => setVeiculos(response.data))
       .catch(error => console.error(error));
   }, []);

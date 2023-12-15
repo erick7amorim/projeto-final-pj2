@@ -10,10 +10,9 @@ const ConcessionariaForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3000/concessionarias', { nome });
+      const response = await axios.post('https://backend-wxoe.onrender.com/concessionarias', { nome });
       console.log('Concessionária cadastrada:', response.data);
 
-      // Redireciona para a lista de concessionárias após o cadastro
       navigate('/concessionarias');
     } catch (error) {
       console.error('Erro ao cadastrar concessionária:', error);

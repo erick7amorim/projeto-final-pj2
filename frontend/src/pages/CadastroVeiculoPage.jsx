@@ -5,9 +5,9 @@ import VeiculoForm from '../components/VeiculoForm';
 
 const CadastroVeiculoPage = () => {
   const handleCadastroVeiculo = (data) => {
-    // Faça a requisição para cadastrar o veículo usando a API
+
     console.log('Dados do formulário:', data);
-    // Substitua a linha acima pela lógica de requisição à API
+
   };
 
   return (

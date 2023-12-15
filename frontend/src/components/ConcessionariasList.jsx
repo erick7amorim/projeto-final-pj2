@@ -6,7 +6,7 @@ function ConcessionariasList() {
   const [concessionarias, setConcessionarias] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/concessionarias')
+    axios.get('https://backend-wxoe.onrender.com/concessionarias')
       .then(response => setConcessionarias(response.data))
       .catch(error => console.error(error));
   }, []);

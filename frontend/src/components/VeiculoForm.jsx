@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const VeiculoForm = ({ onSubmit }) => {
-  const navigate = useNavigate(); // Obtém a instância de navigate
+  const navigate = useNavigate();
 
   const [nome, setNome] = useState('');
   const [categoriaNome, setCategoriaNome] = useState('');
@@ -12,20 +12,19 @@ const VeiculoForm = ({ onSubmit }) => {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    // Busque as concessionárias disponíveis ao carregar o componente
+
     const fetchConcessionarias = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/concessionarias');
+        const response = await axios.get('https://backend-wxoe.onrender.com/concessionarias');
         setConcessionarias(response.data);
       } catch (error) {
         console.error('Erro ao buscar concessionárias:', error);
       }
     };
 
-    // Busque as categorias disponíveis ao carregar o componente
     const fetchCategorias = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/categorias');
+        const response = await axios.get('https://backend-wxoe.onrender.com/categorias');
         setCategorias(response.data);
       } catch (error) {
         console.error('Erro ao buscar categorias:', error);
@@ -40,25 +39,25 @@ const VeiculoForm = ({ onSubmit }) => {
     e.preventDefault();
 
     try {
-      // Busque o ID da categoria com base no nome
+
       const categoria = categorias.find((cat) => cat.nome === categoriaNome);
       const categoriaId = categoria ? categoria.id : null;
 
-      // Faça a requisição POST para o endpoint da sua API
-      const response = await axios.post(`http://localhost:3000/veiculos/concessionarias/${concessionariaId}`, {
+
+      const response = await axios.post(`https://backend-wxoe.onrender.com/veiculos/concessionarias/${concessionariaId}`, {
         nome,
         categoriaId,
       });
 
-      // Chame a função onSubmit com os dados da resposta se necessário
+
       onSubmit(response.data);
 
-      // Limpe o estado do formulário
+
       setNome('');
       setCategoriaNome('');
       setConcessionariaId('');
 
-      // Redirecione para a listagem de veículos após o sucesso
+
       navigate('/veiculos');
     } catch (error) {
       console.error('Erro ao cadastrar veículo:', error);
